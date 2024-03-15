@@ -20,4 +20,5 @@ def home():
         return jsonify({"error": "Failed to fetch data from the API"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Default port 5000 if no PORT env var is set
+    app.run(host='0.0.0.0', port=port)
