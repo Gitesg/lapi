@@ -1,18 +1,19 @@
-import requests
 import os
+import requests
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    url = "https://baseball4.p.rapidapi.com/v1/mlb/schedule"
-    querystring = {"date": "2021-07-30"}
+    url = "https://api-basketball.p.rapidapi.com/timezone"
+
     headers = {
-        "X-RapidAPI-Key": os.getenv("apikey"),
-        "X-RapidAPI-Host": "baseball4.p.rapidapi.com"
+        "X-RapidAPI-Key": os.environ.get("apikey"),
+        "X-RapidAPI-Host": "api-basketball.p.rapidapi.com"
     }
-    response = requests.get(url, headers=headers, params=querystring)
+
+    response = requests.get(url, headers=headers)
 
     if response.ok:
         return jsonify(response.json())
