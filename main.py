@@ -4,6 +4,7 @@ import requests
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     url = "https://baseball4.p.rapidapi.com/v1/mlb/schedule"
@@ -23,4 +24,6 @@ def home():
     else:
         return jsonify({"error": "Failed to fetch data from the API"}), 500
 
-    app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(port=5000)
